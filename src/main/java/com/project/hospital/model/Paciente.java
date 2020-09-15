@@ -1,38 +1,53 @@
 package com.project.hospital.model;
 
 import java.sql.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table (name = "paciente")
+@Table(name = "paciente")
 public class Paciente {
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
-	@Column (name = "nome", nullable = false)
+
+	@Column(name = "nome", nullable = false)
 	private String nome;
-	
-	@Column (name = "cpf", nullable = false)
+
+	@Column(name = "cpf", nullable = false)
 	private String cpf;
-	
+
 	@Enumerated(EnumType.STRING)
 	@Column(name = "sexo", nullable = false)
 	private Gender sexo;
-	
-	@Column (name = "data_nascimento", nullable = false)
+
+	@Column(name = "data_nascimento", nullable = false)
 	private Date data_nascimento;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "paciente", fetch = FetchType.LAZY)
+	private List<Internado> internados;
 
 	public Paciente() {
 		super();
+	}
+
+	public List<Internado> getInternados() {
+		return internados;
+	}
+
+	public void setInternados(List<Internado> internados) {
+		this.internados = internados;
 	}
 
 	public Integer getId() {
