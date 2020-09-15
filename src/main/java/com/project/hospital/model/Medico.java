@@ -8,8 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "medico")
-public class medico {
+@Table(name = "Medico")
+public class Medico {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY )
@@ -22,7 +22,7 @@ public class medico {
 	@Column(name = "codigocbos", nullable = false)
 	private String cbos_codigo;
 	
-	public medico() {
+	public Medico() {
 		super();
 	}
 
