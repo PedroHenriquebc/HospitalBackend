@@ -30,7 +30,7 @@ public class Unidade {
 	@Column(nullable = false, unique = true)	
 	private String inscricao_estadual;
 	
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="leito", fetch=FetchType.LAZY)
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="unidade", fetch=FetchType.LAZY)
 	private List<Leito> leitos;
 	
 	public Unidade() {
