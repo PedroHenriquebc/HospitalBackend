@@ -19,7 +19,7 @@ public class medico {
 	private String name;
 	@Column(name = "crm", nullable = false)
 	private String crm;
-	@Column(name = "codigo cbos", nullable = false)
+	@Column(name = "codigocbos", nullable = false)
 	private String cbos_codigo;
 	
 	public medico() {
