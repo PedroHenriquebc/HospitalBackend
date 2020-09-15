@@ -1,12 +1,16 @@
 package com.project.hospital.model;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -21,6 +25,9 @@ public class Medicamento {
 	
 	@Column(name = "validade")
 	private Date validade;
+	
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "Medicamento", fetch = FetchType.LAZY)
+	private List<Prescreve> prescrito;
 	
 	public Medicamento() {
 		super();
