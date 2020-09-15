@@ -2,9 +2,11 @@ package com.project.hospital.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,8 +20,8 @@ public class Leito {
 	@Column(nullable = false, unique = true)
 	private String codigo;
 
-	@Column(nullable = false)
-	private Long id_unidade;
+	@ManyToOne(fetch = FetchType.EAGER, optional=false)
+	private Unidade unidade;
 
 	public Leito() {
 		super();
@@ -41,11 +43,11 @@ public class Leito {
 		this.codigo = codigo;
 	}
 
-	public Long getId_unidade() {
-		return id_unidade;
+	public Unidade getUnidade() {
+		return unidade;
 	}
 
-	public void setId_unidade(Long id_unidade) {
-		this.id_unidade = id_unidade;
+	public void setUnidade(Unidade unidade) {
+		this.unidade = unidade;
 	}
 }
