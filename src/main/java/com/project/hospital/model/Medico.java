@@ -27,7 +27,13 @@ public class Medico {
 	@Column(name = "codigocbos", nullable = false)
 	private String cbos_codigo;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "Medico",fetch = FetchType.LAZY)
+	/*
+	 
+	 mappedBy = "medico"
+	 medico é o nome do campo presente na classe Prescreve: "private Medico medico;"
+	 
+	 */
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "medico",fetch = FetchType.LAZY)
 	private List<Prescreve> prescreve;
 	
 	public Medico() {

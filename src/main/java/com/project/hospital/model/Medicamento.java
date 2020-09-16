@@ -26,7 +26,13 @@ public class Medicamento {
 	@Column(name = "validade")
 	private Date validade;
 	
-	@OneToMany(cascade = CascadeType.ALL,mappedBy = "Medicamento", fetch = FetchType.LAZY)
+	/*
+	 
+	 mappedBy = "medicamento"
+	 medicamento é o nome do campo presente na classe Prescreve: "private Medicamento medicamento;"
+	 
+	 */
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "medicamento", fetch = FetchType.LAZY)
 	private List<Prescreve> prescrito;
 	
 	public Medicamento() {
