@@ -10,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -24,22 +23,12 @@ public class Leito {
 	@Column(nullable = false, unique = true)
 	private String codigo;
 
-	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	// Vários leitos em uma unidade
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
 	private Unidade unidade;
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "leito", cascade = CascadeType.ALL)
-	private List<Internado> internados;
 
 	public Leito() {
 		super();
-	}
-
-	public List<Internado> getInternados() {
-		return internados;
-	}
-
-	public void setInternados(List<Internado> internados) {
-		this.internados = internados;
 	}
 
 	public Long getId() {
