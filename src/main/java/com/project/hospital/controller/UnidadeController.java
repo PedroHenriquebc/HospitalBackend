@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,6 +29,17 @@ public class UnidadeController {
 		List<Unidade> unidades = unidadeService.findAll();
 		
 		return new ResponseEntity<>(unidades,HttpStatus.OK);
+	}
+	
+	@GetMapping(value = "/{unidade_id}")
+	public ResponseEntity<Unidade> getUnidadesById(@PathVariable(value = "unidade_id") Long id) {
+		Unidade unidade = unidadeService.findById(id);
+		if (unidade == null) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		else {
+			return new ResponseEntity<>(unidade,HttpStatus.OK);
+		}
 	}
 
 }

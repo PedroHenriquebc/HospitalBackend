@@ -21,4 +21,9 @@ public class UnidadeService {
 		// TODO Auto-generated method stub
 		return unidadeRepository.findAll();
 	}
+
+	public Unidade findById(Long id) {
+		// TODO Auto-generated method stub
+		return unidadeRepository.findById(id).orElse(null);
+	}
 }
