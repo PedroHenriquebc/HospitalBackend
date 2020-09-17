@@ -21,12 +21,6 @@ public class Internado {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(nullable = false)
-	private Long id_paciente;
-
-	@Column(nullable = false)
-	private Long id_leito;
-
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
 	private Date data_internacao;
@@ -60,23 +54,6 @@ public class Internado {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-	public Long getId_paciente() {
-		return id_paciente;
-	}
-
-	public void setId_paciente(Long id_paciente) {
-		this.id_paciente = id_paciente;
-	}
-
-	public Long getId_leito() {
-		return id_leito;
-	}
-
-	public void setId_leito(Long id_leito) {
-		this.id_leito = id_leito;
-	}
-
 	public Date getData_internacao() {
 		return data_internacao;
 	}
