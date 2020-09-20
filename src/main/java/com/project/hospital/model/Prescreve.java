@@ -34,6 +34,9 @@ public class Prescreve {
 	
 	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	private Medicamento medicamento;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Internado internado;
 
 	public Prescreve() {
 		super();
