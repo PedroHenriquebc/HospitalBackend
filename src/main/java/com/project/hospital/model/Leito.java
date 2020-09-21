@@ -24,7 +24,7 @@ public class Leito {
 	private String codigo;
 
 	// Vários leitos em uma unidade
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	private Unidade unidade;
 
 	public Leito() {
