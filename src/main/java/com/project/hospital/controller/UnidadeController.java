@@ -10,35 +10,38 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.project.hospital.dto.UnidadeBaseDTO;
+import com.project.hospital.mapper.UnidadeMapper;
 import com.project.hospital.model.Unidade;
 import com.project.hospital.service.UnidadeService;
 
 @RestController
-@RequestMapping(path="/unidade", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "/unidade", produces = MediaType.APPLICATION_JSON_VALUE)
 public class UnidadeController {
 
 	private UnidadeService unidadeService;
+	private UnidadeMapper mapper;
 
-	public UnidadeController(UnidadeService unidadeService) {
+	public UnidadeController(UnidadeService unidadeService, UnidadeMapper mapper) {
 		super();
 		this.unidadeService = unidadeService;
+		this.mapper = mapper;
 	}
-	
+
 	@GetMapping
-	public ResponseEntity<List<Unidade>> getAllUnidades() {
+	public ResponseEntity<List<UnidadeBaseDTO>> getAllUnidades() {
 		List<Unidade> unidades = unidadeService.findAll();
-		
-		return new ResponseEntity<>(unidades,HttpStatus.OK);
+
+		return new ResponseEntity<>(mapper.toUnidadeBaseDTO(unidades), HttpStatus.OK);
 	}
-	
+
 	@GetMapping(value = "/{unidade_id}")
-	public ResponseEntity<Unidade> getUnidadesById(@PathVariable(value = "unidade_id") Long id) {
+	public ResponseEntity<UnidadeBaseDTO> getUnidadesById(@PathVariable(value = "unidade_id") Long id) {
 		Unidade unidade = unidadeService.findById(id);
 		if (unidade == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
-		else {
-			return new ResponseEntity<>(unidade,HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(mapper.toUnidadeBaseDTO(unidade), HttpStatus.OK);
 		}
 	}
 
