@@ -69,4 +69,14 @@ public class Unidade {
 	public void setInscricao_estadual(String inscricao_estadual) {
 		this.inscricao_estadual = inscricao_estadual;
 	}
+
+	public List<Leito> getLeitos() {
+		return leitos;
+	}
+
+	public void setLeitos(List<Leito> leitos) {
+		this.leitos = leitos;
+	}
+	
+	
 }
