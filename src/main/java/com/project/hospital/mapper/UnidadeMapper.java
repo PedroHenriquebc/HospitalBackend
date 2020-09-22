@@ -33,4 +33,8 @@ public class UnidadeMapper {
 	public UnidadeBaseDTO toUnidadeBaseDTO(Unidade unidade) {
 		return mapper.map(unidade, UnidadeBaseDTO.class);
 	}
+
+	public Unidade toUnidade(UnidadeBaseDTO unidadeBaseDTO) {
+		return mapper.map(unidadeBaseDTO, Unidade.class);
+	}
 }

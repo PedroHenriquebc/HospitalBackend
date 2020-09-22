@@ -26,4 +26,18 @@ public class UnidadeService {
 		// TODO Auto-generated method stub
 		return unidadeRepository.findById(id).orElse(null);
 	}
+
+	public Unidade save(Unidade unidade) {
+		// TODO Auto-generated method stub
+		unidade.setId(null);
+
+		try {
+			unidade = unidadeRepository.save(unidade);
+
+			return unidade;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
 }

@@ -7,6 +7,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -45,4 +47,14 @@ public class UnidadeController {
 		}
 	}
 
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<UnidadeBaseDTO> createUnidade(@RequestBody UnidadeBaseDTO unidadeBaseDTO) {
+		Unidade unidade = mapper.toUnidade(unidadeBaseDTO);
+		unidade = unidadeService.save(unidade);
+		if (unidade == null) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		} else {
+			return new ResponseEntity<>(mapper.toUnidadeBaseDTO(unidade), HttpStatus.CREATED);
+		}
+	}
 }
