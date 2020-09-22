@@ -30,9 +30,7 @@ public class LeitoService {
 		return leitoRepository.findById(id).orElse(null);
 	}
 
-	public Leito save(Leito leito) {
-		leito.setId(null);
-
+	public Leito internalSave(Leito leito) {
 		try {
 			leito = leitoRepository.save(leito);
 
@@ -43,5 +41,27 @@ public class LeitoService {
 		} catch (Exception e) {
 			return null;
 		}
+	}
+
+	public Leito save(Leito leito) {
+		leito.setId(null);
+
+		return internalSave(leito);
+	}
+
+	public Leito update(Leito leito) {
+		Long id = leito.getId();
+
+		if (id == null) {
+			return null;
+		}
+
+		boolean exist = leitoRepository.existsById(id);
+
+		if (!exist) {
+			return null;
+		}
+
+		return internalSave(leito);
 	}
 }
