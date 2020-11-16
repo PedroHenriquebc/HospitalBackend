@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -26,12 +27,9 @@ public class Medicamento {
 	@Column(name = "validade")
 	private Date validade;
 	
-	/*
-	 
-	 mappedBy = "medicamento"
-	 medicamento é o nome do campo presente na classe Prescreve: "private Medicamento medicamento;"
-	 
-	 */
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	private Terminologia terminologia;
+	
 	@OneToMany(cascade = CascadeType.ALL,mappedBy = "medicamento", fetch = FetchType.LAZY)
 	private List<Prescreve> prescrito;
 	

@@ -24,6 +24,9 @@ public class Leito {
 	// Vários leitos em uma unidade
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	private Unidade unidade;
+	
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	private Setor setor;
 
 	public Leito() {
 		super();

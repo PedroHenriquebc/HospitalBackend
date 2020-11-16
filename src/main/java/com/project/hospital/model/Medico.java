@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,17 +23,17 @@ public class Medico {
 	
 	@Column(name = "nome", nullable = false)
 	private String name;
-	@Column(name = "crm", nullable = false)
-	private String crm;
-	@Column(name = "codigocbos", nullable = false)
-	private String cbos_codigo;
 	
-	/*
-	 
-	 mappedBy = "medico"
-	 medico é o nome do campo presente na classe Prescreve: "private Medico medico;"
-	 
-	 */
+	@Column(name = "senha", nullable = false)
+	private String senha;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	private Cbos cbos;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	private Conselho conselho;
+	
+	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "medico",fetch = FetchType.LAZY)
 	private List<Prescreve> prescreve;
 	
@@ -56,21 +57,5 @@ public class Medico {
 		this.name = name;
 	}
 
-	public String getCrm() {
-		return crm;
-	}
-
-	public void setCrm(String crm) {
-		this.crm = crm;
-	}
-
-	public String getCbos_codigo() {
-		return cbos_codigo;
-	}
-
-	public void setCbos_codigo(String cbos_codigo) {
-		this.cbos_codigo = cbos_codigo;
-	}
-	
 	
 }

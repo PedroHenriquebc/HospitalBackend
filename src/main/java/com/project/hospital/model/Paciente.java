@@ -30,10 +30,13 @@ public class Paciente {
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "sexo", nullable = false)
-	private Gender sexo;
+	private Sexo sexo;
 
 	@Column(name = "data_nascimento", nullable = false)
 	private Date data_nascimento;
+	
+	@Column(name = "senha", nullable = false)
+	private String senha;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "paciente", fetch = FetchType.LAZY)
 	private List<Internado> internados;
@@ -74,11 +77,11 @@ public class Paciente {
 		this.cpf = cpf;
 	}
 
-	public Gender getSexo() {
+	public Sexo getSexo() {
 		return sexo;
 	}
 
-	public void setSexo(Gender sexo) {
+	public void setSexo(Sexo sexo) {
 		this.sexo = sexo;
 	}
 

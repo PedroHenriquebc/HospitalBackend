@@ -27,6 +27,10 @@ public class Internado {
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
 	private Date data_internacao;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(nullable = false)
+	private Date previsao_alta;
 
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = true)
