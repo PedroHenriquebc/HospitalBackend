@@ -1,16 +1,17 @@
 package com.project.hospital.service;
 
 import org.springframework.stereotype.Service;
-import com.project.hospital.repository.TermologiaRepository;
+
+import com.project.hospital.repository.TerminologiaRepository;
 
 @Service
-public class TermologiaService {
+public class TerminologiaService {
 		
-	private TermologiaRepository termologiaRepository;
+	private TerminologiaRepository terminologiaRepository;
 
-	public TermologiaService(TermologiaRepository termologiaRepository) {
+	public TerminologiaService(TerminologiaRepository terminologiaRepository) {
 		super();
-		this.termologiaRepository = termologiaRepository;
+		this.terminologiaRepository = terminologiaRepository;
 	}
 	
 }

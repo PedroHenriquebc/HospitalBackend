@@ -1,5 +1,5 @@
 package com.project.hospital.model;
 
-public enum Gender {
+public enum Sexo {
 	F , M
 }
