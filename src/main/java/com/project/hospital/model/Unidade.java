@@ -80,6 +80,14 @@ public class Unidade {
 	public void setLeitos(List<Leito> leitos) {
 		this.leitos = leitos;
 	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
 	
 	
 }
