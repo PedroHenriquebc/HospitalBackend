@@ -22,13 +22,9 @@ public class Conselho {
 	
 	@Column(name = "descricao", nullable = false)
 	private String descricao;
-
-	public Conselho(Long id, String codigo, String sigla, String descricao) {
+	
+	public Conselho() {
 		super();
-		this.id = id;
-		this.codigo = codigo;
-		this.sigla = sigla;
-		this.descricao = descricao;
 	}
 
 	public Long getId() {

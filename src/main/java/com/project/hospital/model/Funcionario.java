@@ -56,14 +56,8 @@ public class Funcionario {
 	public void setSetor(Setor setor) {
 		this.setor = setor;
 	}
-
-	public Funcionario(Long id, String nome, String senha, Setor setor) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.senha = senha;
-		this.setor = setor;
-	}
 	
-	
+	public Funcionario(){
+		   super();
+		}
 }

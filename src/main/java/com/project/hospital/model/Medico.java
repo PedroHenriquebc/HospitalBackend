@@ -57,5 +57,13 @@ public class Medico {
 		this.name = name;
 	}
 
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+	
 	
 }

@@ -31,12 +31,8 @@ public class Terminologia {
 	private List<Medicamento> medicamentos;
 	
 	
-	public Terminologia(Long id, String codigo, String sigla, String descricao) {
+	public Terminologia() {
 		super();
-		this.id = id;
-		this.codigo = codigo;
-		this.sigla = sigla;
-		this.descricao = descricao;
 	}
 	
 	public Long getId() {

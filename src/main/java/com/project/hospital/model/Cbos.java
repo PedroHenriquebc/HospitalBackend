@@ -21,11 +21,8 @@ public class Cbos {
 	@Column(name = "descricao", nullable = false)
 	private String descricao;
 
-	public Cbos(Long id, String codigo, String descricao) {
+	public Cbos() {
 		super();
-		this.id = id;
-		this.codigo = codigo;
-		this.descricao = descricao;
 	}
 
 	public Long getId() {

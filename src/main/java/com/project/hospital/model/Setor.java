@@ -55,12 +55,7 @@ public class Setor {
 		this.ramal = ramal;
 	}
 
-	public Setor(Long id, String nome, String ramal) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.ramal = ramal;
-	}
-	
-	
+	public Setor(){
+		   super();
+		}
 }

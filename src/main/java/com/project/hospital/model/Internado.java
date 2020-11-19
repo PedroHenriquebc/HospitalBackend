@@ -45,14 +45,7 @@ public class Internado {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "internado", cascade = CascadeType.ALL)
 	private List<Prescreve> prescreve;
 
-	public void setPaciente(Paciente paciente) {
-		this.paciente = paciente;
-	}
-
-	public Paciente getPaciente() {
-		return paciente;
-	}
-
+	
 	public Internado() {
 		super();
 	}
@@ -64,12 +57,21 @@ public class Internado {
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public Date getData_internacao() {
 		return data_internacao;
 	}
 
 	public void setData_internacao(Date data_internacao) {
 		this.data_internacao = data_internacao;
+	}
+
+	public Date getPrevisao_alta() {
+		return previsao_alta;
+	}
+
+	public void setPrevisao_alta(Date previsao_alta) {
+		this.previsao_alta = previsao_alta;
 	}
 
 	public Date getData_alta() {
@@ -79,4 +81,6 @@ public class Internado {
 	public void setData_alta(Date data_alta) {
 		this.data_alta = data_alta;
 	}
+	
+	
 }
