@@ -73,13 +73,6 @@ public class Unidade {
 		this.inscricao_estadual = inscricao_estadual;
 	}
 
-	public List<Leito> getLeitos() {
-		return leitos;
-	}
-
-	public void setLeitos(List<Leito> leitos) {
-		this.leitos = leitos;
-	}
 
 	public String getTelefone() {
 		return telefone;

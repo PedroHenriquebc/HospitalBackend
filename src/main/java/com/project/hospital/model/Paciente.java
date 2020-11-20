@@ -44,7 +44,7 @@ public class Paciente {
 	public Paciente() {
 		super();
 	}
-
+	/*
 	public List<Internado> getInternados() {
 		return internados;
 	}
@@ -52,7 +52,7 @@ public class Paciente {
 	public void setInternados(List<Internado> internados) {
 		this.internados = internados;
 	}
-
+	*/
 	public Integer getId() {
 		return id;
 	}
