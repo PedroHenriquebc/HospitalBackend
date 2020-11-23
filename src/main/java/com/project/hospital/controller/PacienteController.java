@@ -64,7 +64,7 @@ public class PacienteController {
 	}
 
 	@DeleteMapping(value = "/{paciente_id}")
-	public ResponseEntity<Void> deletePaciente(@PathVariable(value = "paciente") Integer id){
+	public ResponseEntity<Void> deletePaciente(@PathVariable(value = "paciente_id") Integer id){
 		pacienteService.deleteById(id);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
