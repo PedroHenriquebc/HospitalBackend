@@ -27,6 +27,9 @@ public class Medico {
 	@Column(name = "senha", nullable = false)
 	private String senha;
 	
+	@Column(name = "email", nullable = false)
+	private String email;
+	
 	@OneToOne(cascade = CascadeType.ALL)
 	private Cbos cbos;
 	

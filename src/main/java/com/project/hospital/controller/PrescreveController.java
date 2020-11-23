@@ -8,4 +8,5 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(path = "/prescreve", produces = MediaType.APPLICATION_JSON_VALUE)
 public class PrescreveController {
 
+
 }

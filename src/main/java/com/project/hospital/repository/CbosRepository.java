@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.project.hospital.model.Cbos;
 
 @Repository
-public interface CbosRepository extends JpaRepository<Cbos, Long>{
+public interface CbosRepository extends JpaRepository<Cbos, Long> {
 
 }
