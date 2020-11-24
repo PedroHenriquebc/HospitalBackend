@@ -18,7 +18,7 @@ import com.project.hospital.model.Cbos;
 import com.project.hospital.service.CbosService;
 
 @RestController
-@RequestMapping(path = "/internado", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "/cbos", produces = MediaType.APPLICATION_JSON_VALUE)
 public class CbosController {
 	private CbosService cbosService;
 

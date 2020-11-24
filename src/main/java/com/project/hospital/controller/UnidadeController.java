@@ -22,16 +22,13 @@ import com.project.hospital.service.UnidadeService;
 @RestController
 @RequestMapping(path = "/unidade", produces = MediaType.APPLICATION_JSON_VALUE)
 public class UnidadeController {
-
 	private UnidadeService unidadeService;
-	//private UnidadeMapper mapper;
-
-	//public UnidadeController(UnidadeService unidadeService, UnidadeMapper mapper) {
+	
 	public UnidadeController(UnidadeService unidadeService) {
 		super();
 		this.unidadeService = unidadeService;
-		//this.mapper = mapper;
 	}
+	
 	@GetMapping
 	public ResponseEntity<List<Unidade>> getUnidades(){
 		List<Unidade> unidades = unidadeService.findAll();
@@ -39,9 +36,9 @@ public class UnidadeController {
 	}
 
 	@GetMapping(value = "/{unidade_id}")
-	public ResponseEntity<Unidade> getunidade(@PathVariable(value = "unidade_id") Long id){
+	public ResponseEntity<Unidade> getUnidade(@PathVariable(value = "unidade_id") Long id){
 		Unidade unidade = unidadeService.findById(id);
-		if(unidade== null){
+		if(unidade == null){
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		} else {
 			return new ResponseEntity<>(unidade, HttpStatus.OK);
@@ -80,34 +77,4 @@ public class UnidadeController {
 		unidadeService.deleteAll();
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
-	
-	/*
-	@GetMapping
-	public ResponseEntity<List<UnidadeBaseDTO>> getAllUnidades() {
-		List<Unidade> unidades = unidadeService.findAll();
-
-		return new ResponseEntity<>(mapper.toUnidadeBaseDTO(unidades), HttpStatus.OK);
-	}
-
-	@GetMapping(value = "/{unidade_id}")
-	public ResponseEntity<UnidadeBaseDTO> getUnidadesById(@PathVariable(value = "unidade_id") Long id) {
-		Unidade unidade = unidadeService.findById(id);
-		if (unidade == null) {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		} else {
-			return new ResponseEntity<>(mapper.toUnidadeBaseDTO(unidade), HttpStatus.OK);
-		}
-	}
-
-	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<UnidadeBaseDTO> createUnidade(@RequestBody UnidadeBaseDTO unidadeBaseDTO) {
-		Unidade unidade = mapper.toUnidade(unidadeBaseDTO);
-		unidade = unidadeService.save(unidade);
-		if (unidade == null) {
-			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-		} else {
-			return new ResponseEntity<>(mapper.toUnidadeBaseDTO(unidade), HttpStatus.CREATED);
-		}
-	}
-	*/
 }

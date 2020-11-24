@@ -18,7 +18,7 @@ import com.project.hospital.model.Conselho;
 import com.project.hospital.service.ConselhoService;
 
 @RestController
-@RequestMapping(path = "/funcionario", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "/conselho", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ConselhoController {
 
 	private ConselhoService conselhoService;
