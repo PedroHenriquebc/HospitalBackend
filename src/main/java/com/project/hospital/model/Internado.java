@@ -81,6 +81,22 @@ public class Internado {
 	public void setData_alta(Date data_alta) {
 		this.data_alta = data_alta;
 	}
+
+	public Paciente getPaciente() {
+		return paciente;
+	}
+
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
+	}
+
+	public Leito getLeito() {
+		return leito;
+	}
+
+	public void setLeito(Leito leito) {
+		this.leito = leito;
+	}
 	
 	
 }
