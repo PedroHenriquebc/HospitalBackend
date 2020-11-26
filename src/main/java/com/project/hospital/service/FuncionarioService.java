@@ -24,6 +24,10 @@ public class FuncionarioService {
 	public Funcionario findById(Long id) {
 		return funcionarioRepository.findById(id).orElse(null);
 	}
+	
+	public Funcionario findByEmail(String email) {
+		return funcionarioRepository.findByEmail(email).orElse(null);
+	}
 
 	public Funcionario save(Funcionario funcionario) {
 		funcionario.setId(null);

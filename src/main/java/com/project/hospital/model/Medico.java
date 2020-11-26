@@ -22,7 +22,7 @@ public class Medico {
 	private Long id;
 	
 	@Column(name = "nome", nullable = false)
-	private String name;
+	private String nome;
 	
 	@Column(name = "senha", nullable = false)
 	private String senha;
@@ -52,12 +52,12 @@ public class Medico {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getSenha() {
@@ -66,6 +66,14 @@ public class Medico {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	

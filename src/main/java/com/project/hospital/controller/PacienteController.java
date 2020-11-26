@@ -41,6 +41,26 @@ public class PacienteController {
 			return new ResponseEntity<>(paciente, HttpStatus.OK);
 		}
 	}
+	
+	@GetMapping(value = "email/{paciente_email}")
+	public ResponseEntity<Paciente> getPaciente(@PathVariable(value = "paciente_email") String email){
+		Paciente paciente = pacienteService.findByEmail(email);
+		if(paciente == null){
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		} else {
+			return new ResponseEntity<>(paciente, HttpStatus.OK);
+		}
+	}
+	
+	@GetMapping(value = "cpf/{paciente_cpf}")
+	public ResponseEntity<Paciente> getPaciente1(@PathVariable(value = "paciente_cpf") String cpf){
+		Paciente paciente = pacienteService.findByCpf(cpf);
+		if(paciente == null){
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		} else {
+			return new ResponseEntity<>(paciente, HttpStatus.OK);
+		}
+	}
 
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Paciente> createPaciente(@RequestBody Paciente paciente) {

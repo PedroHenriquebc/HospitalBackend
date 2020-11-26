@@ -22,6 +22,9 @@ public class Funcionario {
 	@Column(name = "senha", nullable = false)
 	private String senha;
 	
+	@Column(name = "email", nullable = false)
+	private String email;
+	
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	private Setor setor;
 
@@ -57,6 +60,14 @@ public class Funcionario {
 		this.setor = setor;
 	}
 	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public Funcionario(){
 		   super();
 		}

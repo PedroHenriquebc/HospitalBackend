@@ -41,6 +41,16 @@ public class FuncionarioController {
 			return new ResponseEntity<>(funcionario, HttpStatus.OK);
 		}
 	}
+	
+	@GetMapping(value = "email/{funcionario_email}")
+	public ResponseEntity<Funcionario> getFuncionario(@PathVariable(value = "funcionario_email") String email){
+		Funcionario funcionario= funcionarioService.findByEmail(email);
+		if(funcionario== null){
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		} else {
+			return new ResponseEntity<>(funcionario, HttpStatus.OK);
+		}
+	}
 
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Funcionario> createFuncionario(@RequestBody Funcionario funcionario) {

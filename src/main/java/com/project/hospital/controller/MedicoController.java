@@ -33,7 +33,7 @@ public class MedicoController {
 		return new ResponseEntity<>(medico, HttpStatus.OK);
 	}
 	
-	@GetMapping(value = "/{medico_email}")
+	@GetMapping(value = "email/{medico_email}")
 	public ResponseEntity<Medico> getMedico(@PathVariable(value = "medico_email") String email){
 		Medico medico= medicoService.findByEmail(email);
 		if(medico == null){
@@ -42,8 +42,7 @@ public class MedicoController {
 			return new ResponseEntity<>(medico, HttpStatus.OK);
 		}
 	}
-	/*
-	@GetMapping(value = "/{medico_email}")
+	@GetMapping(value = "/{medico_id}")
 	public ResponseEntity<Medico> getInternado(@PathVariable(value = "medico_id") Long id){
 		Medico medico= medicoService.findById(id);
 		if(medico == null){
@@ -52,7 +51,6 @@ public class MedicoController {
 			return new ResponseEntity<>(medico, HttpStatus.OK);
 		}
 	}
-	*/
 	
 	@PutMapping(value = "/{medico_id}", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Medico> updateMedico(@PathVariable(value = "medico_id") Long id, @RequestBody Medico medico) {

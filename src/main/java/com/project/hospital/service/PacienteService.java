@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import com.project.hospital.model.Medico;
 import com.project.hospital.model.Paciente;
 import com.project.hospital.repository.PacienteRepository;
 
@@ -23,6 +24,14 @@ public class PacienteService {
 
 	public Paciente findById(Integer id) {
 		return pacienteRepository.findById(id).orElse(null);
+	}
+	
+	public Paciente findByEmail(String email) {
+		return pacienteRepository.findByEmail(email).orElse(null);
+	}
+	
+	public Paciente findByCpf(String cpf) {
+		return pacienteRepository.findByCpf(cpf).orElse(null);
 	}
 
 	public Paciente save(Paciente paciente) {

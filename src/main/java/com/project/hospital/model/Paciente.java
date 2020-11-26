@@ -37,6 +37,9 @@ public class Paciente {
 	
 	@Column(name = "senha", nullable = false)
 	private String senha;
+	
+	@Column(name = "email", nullable = false)
+	private String email;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "paciente", fetch = FetchType.LAZY)
 	private List<Internado> internados;
@@ -100,5 +103,13 @@ public class Paciente {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	
 	
 }
