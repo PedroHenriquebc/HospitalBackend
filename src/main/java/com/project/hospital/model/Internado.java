@@ -31,10 +31,6 @@ public class Internado {
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
 	private Date previsao_alta;
-
-	@Temporal(TemporalType.DATE)
-	@Column(nullable = true)
-	private Date data_alta;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Paciente paciente;
@@ -74,13 +70,6 @@ public class Internado {
 		this.previsao_alta = previsao_alta;
 	}
 
-	public Date getData_alta() {
-		return data_alta;
-	}
-
-	public void setData_alta(Date data_alta) {
-		this.data_alta = data_alta;
-	}
 
 	public Paciente getPaciente() {
 		return paciente;
