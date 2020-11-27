@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,7 +27,7 @@ public class CbosController {
 		super();
 		this.cbosService = cbosService;
 	}
-	
+	@CrossOrigin
 	@GetMapping
 	public ResponseEntity<List<Cbos>> getCbos(){
 		List<Cbos> cbos = cbosService.findAll();
@@ -42,7 +43,7 @@ public class CbosController {
 			return new ResponseEntity<>(cbos, HttpStatus.OK);
 		}
 	}*/
-
+	@CrossOrigin
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Cbos> createCbos(@RequestBody Cbos cbos) {
 		Cbos cbosSaved = cbosService.save(cbos);
@@ -52,7 +53,7 @@ public class CbosController {
 			return new ResponseEntity<>(cbosSaved, HttpStatus.CREATED);
 		}
 	}
-
+	@CrossOrigin
 	@PutMapping(value = "/{cbos_id}", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Cbos> updateCbos(@PathVariable(value = "cbos_id") Long id, @RequestBody Cbos cbos) {
 		cbos.setId(id);
@@ -63,7 +64,7 @@ public class CbosController {
 			return new ResponseEntity<>(cbosSaved, HttpStatus.OK);
 		}
 	}
-
+	@CrossOrigin
 	@DeleteMapping(value = "/{cbos_id}")
 	public ResponseEntity<Void> deleteCbos(@PathVariable(value = "cbos_id") Long id){
 		cbosService.deleteById(id);

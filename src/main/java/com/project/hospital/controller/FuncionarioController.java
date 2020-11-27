@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,12 +27,13 @@ public class FuncionarioController {
 		super();
 		this.funcionarioService = funcionarioService;
 	}
+	@CrossOrigin
 	@GetMapping
 	public ResponseEntity<List<Funcionario>> getFuncionarios(){
 		List<Funcionario> funcionarios = funcionarioService.findAll();
 		return new ResponseEntity<>(funcionarios, HttpStatus.OK);
 	}
-
+	@CrossOrigin
 	@GetMapping(value = "/{funcionario_id}")
 	public ResponseEntity<Funcionario> getFuncionario(@PathVariable(value = "funcionario_id") Long id){
 		Funcionario funcionario = funcionarioService.findById(id);
@@ -41,7 +43,7 @@ public class FuncionarioController {
 			return new ResponseEntity<>(funcionario, HttpStatus.OK);
 		}
 	}
-	
+	@CrossOrigin
 	@GetMapping(value = "email/{funcionario_email}")
 	public ResponseEntity<Funcionario> getFuncionario(@PathVariable(value = "funcionario_email") String email){
 		Funcionario funcionario= funcionarioService.findByEmail(email);
@@ -51,7 +53,7 @@ public class FuncionarioController {
 			return new ResponseEntity<>(funcionario, HttpStatus.OK);
 		}
 	}
-
+	@CrossOrigin
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Funcionario> createFuncionario(@RequestBody Funcionario funcionario) {
 		Funcionario funcionarioSaved = funcionarioService.save(funcionario);
@@ -61,7 +63,7 @@ public class FuncionarioController {
 			return new ResponseEntity<>(funcionarioSaved, HttpStatus.CREATED);
 		}
 	}
-
+	@CrossOrigin
 	@PutMapping(value = "/{funcionario_id}", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Funcionario> updateFuncionario(@PathVariable(value = "funcionario_id") Long id, @RequestBody Funcionario funcionario) {
 		funcionario.setId(id);
@@ -72,13 +74,13 @@ public class FuncionarioController {
 			return new ResponseEntity<>(funcionarioSaved, HttpStatus.OK);
 		}
 	}
-
+	@CrossOrigin
 	@DeleteMapping(value = "/{funcionario_id}")
 	public ResponseEntity<Void> deleteFuncionario(@PathVariable(value = "funcionario_id") Long id){
 		funcionarioService.deleteById(id);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
-
+	@CrossOrigin
 	@DeleteMapping
 	public ResponseEntity<Void> deleteFuncionarios(){
 		funcionarioService.deleteAll();

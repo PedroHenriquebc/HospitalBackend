@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,13 +30,13 @@ public class MedicamentoController {
 	}
 
 
-
+	@CrossOrigin
 	@GetMapping
 	public ResponseEntity<List<Medicamento>> getMedicamento(){
 		List<Medicamento> medicamento = medicamentoService.findAll();
 		return new ResponseEntity<>(medicamento, HttpStatus.OK);
 	}
-	
+	@CrossOrigin
 	@PutMapping(value = "/{medicamento_id}", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Medicamento> updateMedicamento(@PathVariable(value = "internado_id") Integer id, @RequestBody Medicamento medicamento) {
 		medicamento.setId(id);
@@ -46,7 +47,7 @@ public class MedicamentoController {
 			return new ResponseEntity<>(medicamentoSaved, HttpStatus.OK);
 		}
 	}
-	
+	@CrossOrigin
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Medicamento> createMedicamento(@RequestBody Medicamento medicamento) {
 		Medicamento medicamentoSaved = medicamentoService.save(medicamento);
@@ -57,7 +58,7 @@ public class MedicamentoController {
 		}
 	}
 	
-	
+	@CrossOrigin
 	@DeleteMapping(value = "/{medicamento_id}")
 	public ResponseEntity<Void> deleteMedicamento(@PathVariable(value = "medicamento_id") Integer id){
 		medicamentoService.deleteById(id);

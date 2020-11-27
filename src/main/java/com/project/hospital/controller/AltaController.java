@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,13 +27,13 @@ public class AltaController {
 		super();
 		this.altaService = altaService;
 	}
-	
+	@CrossOrigin
 	@GetMapping
 	public ResponseEntity<List<Alta>> getAltas(){
 		List<Alta> altas = altaService.findAll();
 		return new ResponseEntity<>(altas, HttpStatus.OK);
 	}
-
+	@CrossOrigin
 	@GetMapping(value = "/{alta_id}")
 	public ResponseEntity<Alta> getAlta(@PathVariable(value = "alta_id") Long id){
 		Alta alta = altaService.findById(id);
@@ -42,7 +43,7 @@ public class AltaController {
 			return new ResponseEntity<>(alta, HttpStatus.OK);
 		}
 	}
-
+	@CrossOrigin
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Alta> createAlta(@RequestBody Alta alta) {
 		Alta altaSaved = altaService.save(alta);
@@ -52,7 +53,7 @@ public class AltaController {
 			return new ResponseEntity<>(altaSaved, HttpStatus.CREATED);
 		}
 	}
-
+	@CrossOrigin
 	@PutMapping(value = "/{alta_id}", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Alta> updateAlta(@PathVariable(value = "alta_id") Long id, @RequestBody Alta alta) {
 		alta.setId(id);
@@ -63,13 +64,13 @@ public class AltaController {
 			return new ResponseEntity<>(altaSaved, HttpStatus.OK);
 		}
 	}
-
+	@CrossOrigin
 	@DeleteMapping(value = "/{alta_id}")
 	public ResponseEntity<Void> deleteAlta(@PathVariable(value = "alta_id") Long id){
 		altaService.deleteById(id);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
-
+	@CrossOrigin
 	@DeleteMapping
 	public ResponseEntity<Void> deleteAltas(){
 		altaService.deleteAll();

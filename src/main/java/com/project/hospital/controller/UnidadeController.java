@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.hospital.dto.UnidadeBaseDTO;
-import com.project.hospital.mapper.UnidadeMapper;
 import com.project.hospital.model.Unidade;
 import com.project.hospital.service.UnidadeService;
 
@@ -29,12 +28,14 @@ public class UnidadeController {
 		this.unidadeService = unidadeService;
 	}
 	
+	@CrossOrigin
 	@GetMapping
 	public ResponseEntity<List<Unidade>> getUnidades(){
 		List<Unidade> unidades = unidadeService.findAll();
 		return new ResponseEntity<>(unidades, HttpStatus.OK);
 	}
-
+	
+	@CrossOrigin
 	@GetMapping(value = "/{unidade_id}")
 	public ResponseEntity<Unidade> getUnidade(@PathVariable(value = "unidade_id") Long id){
 		Unidade unidade = unidadeService.findById(id);
@@ -44,7 +45,7 @@ public class UnidadeController {
 			return new ResponseEntity<>(unidade, HttpStatus.OK);
 		}
 	}
-
+	@CrossOrigin
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Unidade> createUnidade(@RequestBody Unidade unidade) {
 		Unidade unidadeSaved = unidadeService.save(unidade);
@@ -54,7 +55,7 @@ public class UnidadeController {
 			return new ResponseEntity<>(unidadeSaved, HttpStatus.CREATED);
 		}
 	}
-
+	@CrossOrigin
 	@PutMapping(value = "/{unidade_id}", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Unidade> updateUnidade(@PathVariable(value = "unidade_id") Long id, @RequestBody Unidade unidade) {
 		unidade.setId(id);
@@ -65,13 +66,13 @@ public class UnidadeController {
 			return new ResponseEntity<>(unidadeSaved, HttpStatus.OK);
 		}
 	}
-
+	@CrossOrigin
 	@DeleteMapping(value = "/{unidade_id}")
 	public ResponseEntity<Void> deleteUnidade(@PathVariable(value = "unidade_id") Long id){
 		unidadeService.deleteById(id);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
-
+	@CrossOrigin
 	@DeleteMapping
 	public ResponseEntity<Void> deleteUnidades(){
 		unidadeService.deleteAll();

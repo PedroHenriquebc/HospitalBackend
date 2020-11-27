@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,13 +29,13 @@ public class LeitoController {
 		super();
 		this.leitoService = leitoService;
 	}
-	
+	@CrossOrigin
 	@GetMapping
 	public ResponseEntity<List<Leito>> getLeitos(){
 		List<Leito> leitos = leitoService.findAll();
 		return new ResponseEntity<>(leitos, HttpStatus.OK);
 	}
-
+	@CrossOrigin
 	@GetMapping(value = "/{leito_id}")
 	public ResponseEntity<Leito> getLeito(@PathVariable(value = "leito_id") Long id){
 		Leito leito = leitoService.findById(id);
@@ -44,7 +45,7 @@ public class LeitoController {
 			return new ResponseEntity<>(leito, HttpStatus.OK);
 		}
 	}
-
+	@CrossOrigin
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Leito> createLeito(@RequestBody Leito leito) {
 		Leito leitoSaved = leitoService.save(leito);
@@ -54,7 +55,7 @@ public class LeitoController {
 			return new ResponseEntity<>(leitoSaved, HttpStatus.CREATED);
 		}
 	}
-
+	@CrossOrigin
 	@PutMapping(value = "/{leito_id}", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Leito> updateLeito(@PathVariable(value = "leito_id") Long id, @RequestBody Leito leito) {
 		leito.setId(id);
@@ -65,13 +66,13 @@ public class LeitoController {
 			return new ResponseEntity<>(leitoSaved, HttpStatus.OK);
 		}
 	}
-
+	@CrossOrigin
 	@DeleteMapping(value = "/{leito_id}")
 	public ResponseEntity<Void> deleteLeito(@PathVariable(value = "leito_id") Long id){
 		leitoService.deleteById(id);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
-
+	@CrossOrigin
 	@DeleteMapping
 	public ResponseEntity<Void> deleteLeitos(){
 		leitoService.deleteAll();

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,13 +28,13 @@ public class ConselhoController {
 		super();
 		this.conselhoService = conselhoService;
 	}
-	
+	@CrossOrigin
 	@GetMapping
 	public ResponseEntity<List<Conselho>> getConselho(){
 		List<Conselho> conselho = conselhoService.findAll();
 		return new ResponseEntity<>(conselho, HttpStatus.OK);
 	}
-
+	@CrossOrigin
 	@GetMapping(value = "/{conselho_id}")
 	public ResponseEntity<Conselho> getConselho(@PathVariable(value = "conselho_id") Long id){
 		Conselho conselho= conselhoService.findById(id);
@@ -43,7 +44,7 @@ public class ConselhoController {
 			return new ResponseEntity<>(conselho, HttpStatus.OK);
 		}
 	}
-
+	@CrossOrigin
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Conselho> createConselho(@RequestBody Conselho conselho) {
 		Conselho conselhoSaved = conselhoService.save(conselho);
@@ -53,7 +54,7 @@ public class ConselhoController {
 			return new ResponseEntity<>(conselhoSaved, HttpStatus.CREATED);
 		}
 	}
-
+	@CrossOrigin
 	@PutMapping(value = "/{conselho_id}", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Conselho> updateConselho(@PathVariable(value = "conselho_id") Long id, @RequestBody Conselho conselho) {
 		conselho.setId(id);
@@ -64,7 +65,7 @@ public class ConselhoController {
 			return new ResponseEntity<>(conselhoSaved, HttpStatus.OK);
 		}
 	}
-
+	@CrossOrigin
 	@DeleteMapping(value = "/{conselho_id}")
 	public ResponseEntity<Void> deleteConselho(@PathVariable(value = "conselho_id") Long id){
 		conselhoService.deleteById(id);

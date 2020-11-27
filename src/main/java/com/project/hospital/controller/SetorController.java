@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,12 +26,13 @@ public class SetorController {
 		super();
 		this.setorService = setorService;
 	}
+	@CrossOrigin
 	@GetMapping
 	public ResponseEntity<List<Setor>> getSetor(){
 		List<Setor> setor = setorService.findAll();
 		return new ResponseEntity<>(setor, HttpStatus.OK);
 	}
-
+	@CrossOrigin
 	@GetMapping(value = "/{setor_id}")
 	public ResponseEntity<Setor> getSetor(@PathVariable(value = "setor_id") Long id){
 		Setor setor= setorService.findById(id);
@@ -40,7 +42,7 @@ public class SetorController {
 			return new ResponseEntity<>(setor, HttpStatus.OK);
 		}
 	}
-
+	@CrossOrigin
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Setor> createSetor(@RequestBody Setor setor) {
 		Setor setorSaved = setorService.save(setor);
@@ -50,7 +52,7 @@ public class SetorController {
 			return new ResponseEntity<>(setorSaved, HttpStatus.CREATED);
 		}
 	}
-
+	@CrossOrigin
 	@PutMapping(value = "/{setor_id}", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Setor> updateSetor(@PathVariable(value = "setor_id") Long id, @RequestBody Setor setor) {
 		setor.setId(id);
@@ -61,13 +63,13 @@ public class SetorController {
 			return new ResponseEntity<>(setorSaved, HttpStatus.OK);
 		}
 	}
-
+	@CrossOrigin
 	@DeleteMapping(value = "/{setor_id}")
 	public ResponseEntity<Void> deleteSetor(@PathVariable(value = "setor_id") Long id){
 		setorService.deleteById(id);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
-
+	@CrossOrigin
 	@DeleteMapping
 	public ResponseEntity<Void> deleteSetor(){
 		setorService.deleteAll();

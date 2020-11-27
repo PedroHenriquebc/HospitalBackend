@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,13 +23,13 @@ import com.project.hospital.service.TerminologiaService;
 public class TerminologiaController {
 	
 	private TerminologiaService terminologiaService;
-	
+	@CrossOrigin
 	@GetMapping
 	public ResponseEntity<List<Terminologia>> getTerminologia(){
 		List<Terminologia> terminologia = terminologiaService.findAll();
 		return new ResponseEntity<>(terminologia, HttpStatus.OK);
 	}
-	
+	@CrossOrigin
 	@GetMapping(value = "/{terminologia_id}")
 	public ResponseEntity<Terminologia> getTerminologia(@PathVariable(value = "terminologia_id") Long id){
 		Terminologia terminologia= terminologiaService.findById(id);
@@ -38,7 +39,7 @@ public class TerminologiaController {
 			return new ResponseEntity<>(terminologia, HttpStatus.OK);
 		}
 	}
-	
+	@CrossOrigin
 	@PutMapping(value = "/{terminologia_id}", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Terminologia> updateTerminologia(@PathVariable(value = "terminologia_id") Long id, @RequestBody Terminologia terminologia) {
 		terminologia.setId(id);
@@ -49,7 +50,7 @@ public class TerminologiaController {
 			return new ResponseEntity<>(terminologiaSaved, HttpStatus.OK);
 		}
 	}
-	
+	@CrossOrigin
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Terminologia> createTerminologia(@RequestBody Terminologia terminologia) {
 		Terminologia terminologiaSaved = terminologiaService.save(terminologia);
@@ -59,7 +60,7 @@ public class TerminologiaController {
 			return new ResponseEntity<>(terminologiaSaved, HttpStatus.CREATED);
 		}
 	}
-	
+	@CrossOrigin
 	@DeleteMapping(value = "/{terminologia_id}")
 	public ResponseEntity<Void> deleteTerminologia(@PathVariable(value = "terminologia_id") Long id){
 		terminologiaService.deleteById(id);
